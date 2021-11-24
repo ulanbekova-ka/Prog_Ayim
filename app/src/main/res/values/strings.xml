@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">ProgAyim</string>
+    <string name="app_name">ProgrammerAyimdar</string>
+    <string name="red">RED</string>
+    <string name="yellow">YELLOW</string>
+    <string name="green">GREEN</string>
+    <string name="text">Traffic lights</string>
 </resources>
