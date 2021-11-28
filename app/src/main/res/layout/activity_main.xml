@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
+    android:background="@color/black"
     android:baselineAligned="false">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -12,8 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:text="Input something"
-        android:textSize="28sp"
+        android:text="@string/inp_text"
+        android:textSize="32sp"
+        android:textColor="@color/my_white"
+        android:background="@color/black"
         android:gravity="end"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -21,8 +24,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:text="Result"
-        android:textSize="24sp"
+        android:text="@string/res_text"
+        android:textSize="28sp"
+        android:textColor="@color/my_white"
+        android:background="@color/black"
         android:gravity="end"/>
 
 
@@ -36,11 +41,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/all_clear_button"
+            style="@style/MyButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="AC"
-            android:textSize="20sp"/>
+            android:text="AC" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/open_bracket_button"
@@ -48,7 +53,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="("
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/close_bracket_button"
@@ -56,7 +61,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text=")"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/divide_button"
@@ -64,7 +69,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="/"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -82,7 +87,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="7"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/eight_button"
@@ -90,7 +95,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="8"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/nine_button"
@@ -98,7 +103,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="9"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/multiply_button"
@@ -106,7 +111,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="*"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -124,7 +129,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="4"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/five_button"
@@ -132,7 +137,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="5"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/six_button"
@@ -140,7 +145,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="6"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/add_button"
@@ -148,7 +153,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="+"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -166,7 +171,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="1"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/two_button"
@@ -174,7 +179,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="2"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/three_button"
@@ -182,7 +187,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="3"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/subtract_button"
@@ -190,7 +195,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="-"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -208,7 +213,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="."
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/zero_button"
@@ -216,7 +221,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="0"
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/go_back_button"
@@ -224,7 +229,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="BACK"
-            android:textSize="20sp" />
+            style="@style/MyButtonStyle"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/equal_button"
@@ -232,7 +237,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="="
-            android:textSize="20sp"/>
+            style="@style/MyButtonStyle"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
