@@ -11,6 +11,8 @@ import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
     private var expression = StringBuilder("")
+    private var lastInp = ' '
+    private var isBracketOpened = false
     private lateinit var inpTxt: AppCompatTextView
     private lateinit var resultTxt: AppCompatTextView
 
@@ -62,82 +64,126 @@ class MainActivity : AppCompatActivity() {
         resultTxt = findViewById(R.id.solution_txt)
         val equalButton = findViewById<AppCompatButton>(R.id.equal_button)
         equalButton.setOnClickListener {
-            try {
-                val result = ExpressionBuilder(expression.toString()).build().evaluate()
-                val resToInt = result.toInt()
-                if ((result * 10).toInt() == resToInt * 10) {
-                    resultTxt.text = resToInt.toString()
-                } else {
-                    resultTxt.text = result.toString()
+
+            if (!lastInp.isDigit() || isBracketOpened) {
+                resultTxt.text = "Error: Incorrect syntax"
+            } else {
+                try {
+                    val result = ExpressionBuilder(expression.toString()).build().evaluate()
+                    val resToInt = result.toInt()
+                    if ((result * 10).toInt() == resToInt * 10) {
+                        resultTxt.text = resToInt.toString()
+                    } else {
+                        resultTxt.text = result.toString()
+                    }
+                } catch (e: Exception) {
+                    resultTxt.text = e.message
                 }
-            } catch (e: Exception) {
-                resultTxt.text = e.message
             }
         }
     }
 
     private fun onClick(view: View) {
+
         when(view.id) {
             R.id.one_button -> {
                 expression.append('1')
+                lastInp = '1'
             }
             R.id.two_button -> {
                 expression.append('2')
+                lastInp = '2'
             }
             R.id.three_button -> {
                 expression.append('3')
+                lastInp = '3'
             }
             R.id.four_button -> {
                 expression.append('4')
+                lastInp = '4'
             }
             R.id.five_button -> {
                 expression.append('5')
+                lastInp = '5'
             }
             R.id.six_button -> {
                 expression.append('6')
+                lastInp = '6'
             }
             R.id.seven_button -> {
                 expression.append('7')
+                lastInp = '7'
             }
             R.id.eight_button -> {
                 expression.append('8')
+                lastInp = '8'
             }
             R.id.nine_button -> {
                 expression.append('9')
+                lastInp = '9'
             }
             R.id.zero_button -> {
-                if (expression.isNotEmpty()) expression.append('0')
-
+                if (expression.isNotEmpty()) {
+                    expression.append('0')
+                    lastInp = '0'
+                }
             }
             R.id.add_button -> {
-                expression.append('+')
+                if (lastInp.isDigit() || lastInp == ')') {
+                    expression.append('+')
+                    lastInp ='+'
+                }
             }
             R.id.subtract_button -> {
-                expression.append('-')
+                if (lastInp.isDigit() || lastInp == ')') {
+                    expression.append('-')
+                    lastInp = '-'
+                }
             }
             R.id.divide_button -> {
-                expression.append('/')
+                if (lastInp.isDigit() || lastInp == ')') {
+                    expression.append('/')
+                    lastInp = '/'
+                }
             }
             R.id.multiply_button -> {
-                expression.append('*')
+                if (lastInp.isDigit() || lastInp == ')') {
+                    expression.append('*')
+                    lastInp = '*'
+                }
             }
             R.id.all_clear_button -> {
                 if (expression.isNotEmpty()) {
                     expression.clear()
                     resultTxt.text = ""
+                    lastInp = ' '
                 }
             }
             R.id.open_bracket_button -> {
-                expression.append('(')
+                if (lastInp != '.' || !lastInp.isDigit()) {
+                    expression.append('(')
+                    lastInp = '('
+                    isBracketOpened = true
+                }
             }
             R.id.close_bracket_button -> {
-                if (expression.contains('(')) expression.append(')')
+                if (isBracketOpened) {
+                    expression.append(')')
+                    lastInp = ')'
+                    isBracketOpened = false
+                }
             }
             R.id.dot_button -> {
-                if (expression.isNotEmpty()) expression.append('.')
+                if (lastInp.isDigit()) {
+                    expression.append('.')
+                    lastInp = '.'
+                }
             }
             R.id.go_back_button -> {
-                if (expression.isNotEmpty()) expression.deleteCharAt(expression.length - 1)
+                if (expression.isNotEmpty()) {
+                    expression.deleteCharAt(expression.length - 1)
+                    lastInp = expression.elementAt(expression.length - 1)
+                }
             }
         }
 
