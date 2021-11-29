@@ -179,7 +179,7 @@ class MainActivity : AppCompatActivity() {
                     lastInp = '.'
                 }
             }
-            R.id.go_back_button -> {
+            R.id.go_back_button -> { // крашится, если что нибудь ввести и потом стереть несколько раз
                 if (expression.isNotEmpty()) {
                     expression.deleteCharAt(expression.length - 1)
                     lastInp = expression.elementAt(expression.length - 1)
