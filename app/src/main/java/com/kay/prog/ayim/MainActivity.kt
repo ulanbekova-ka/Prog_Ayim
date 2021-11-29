@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO)
             intent.data = Uri.parse("mailto:")
-            intent.putExtra(Intent.EXTRA_EMAIL, mailTxt.text)
-            intent.putExtra(Intent.EXTRA_SUBJECT, subj.text)
+            intent.putExtra(Intent.EXTRA_EMAIL, mailTxt.text) // email не подставляется
+            intent.putExtra(Intent.EXTRA_SUBJECT, subj.text) // subject тоже не подставляется
             intent.putExtra(Intent.EXTRA_TEXT, txt.text)
 
             try {
