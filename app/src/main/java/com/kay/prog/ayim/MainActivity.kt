@@ -2,9 +2,8 @@ package com.kay.prog.ayim
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.AppCompatTextView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnItemClicked {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,9 +14,15 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-//    override fun onItemClicked(itemNum: Int) {
-//        val frg2 = supportFragmentManager.findFragmentById(R.id.fragment_container) as Fragment2
-//
-//        frg2.setText("Redirected from ITEM -$itemNum")
-//    }
+    override fun onItemClicked(item: Int) {
+        val frg2 = Fragment2()
+        val bundle = Bundle()
+        bundle.putString("key", "Redirected from ITEM -$item")
+        frg2.arguments = bundle
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, frg2)
+            .addToBackStack(null)
+            .commit()
+    }
 }

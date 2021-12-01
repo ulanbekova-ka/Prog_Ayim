@@ -3,10 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/User/Prog/Ayim/app/src/main/res/layout/activity_main.xml" value="0.10371376811594203" />
-        <entry key="..\:/Users/User/Prog/Ayim/app/src/main/res/layout/fragment.xml" value="0.10371376811594203" />
-        <entry key="..\:/Users/User/Prog/Ayim/app/src/main/res/layout/fragment2.xml" value="0.10371376811594203" />
-        <entry key="..\:/Users/User/Prog/Ayim/app/src/main/res/layout/item_recycler.xml" value="0.10371376811594203" />
+        <entry key="..\:/Users/User/Prog/Ayim/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/User/Prog/Ayim/app/src/main/res/layout/fragment1.xml" value="0.14" />
+        <entry key="..\:/Users/User/Prog/Ayim/app/src/main/res/layout/fragment2.xml" value="0.1" />
+        <entry key="..\:/Users/User/Prog/Ayim/app/src/main/res/layout/item_recycler.xml" value="0.16" />
       </map>
     </option>
   </component>
