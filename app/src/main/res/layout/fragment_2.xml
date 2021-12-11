@@ -6,12 +6,23 @@
     android:background="@color/green">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/frg2_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="This is Fragment 2"
         android:textSize="24sp"
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/frg2_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/frg2_img"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/image_default"
+        app:layout_constraintTop_toBottomOf="@id/frg2_txt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
