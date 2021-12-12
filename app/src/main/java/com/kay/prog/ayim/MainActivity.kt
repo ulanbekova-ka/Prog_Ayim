@@ -182,7 +182,12 @@ class MainActivity : AppCompatActivity() {
             R.id.go_back_button -> {
                 if (expression.isNotEmpty()) {
                     expression.deleteCharAt(expression.length - 1)
-                    lastInp = expression.elementAt(expression.length - 1)
+
+                    lastInp = if (expression.isNotEmpty()) {
+                        expression.elementAt(expression.length - 1)
+                    } else {
+                        ' '
+                    }
                 }
             }
         }
