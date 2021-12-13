@@ -10,8 +10,7 @@ class MainActivity : AppCompatActivity(), CheckInput {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, AuthorisationFragment())
-            .addToBackStack(null)
+            .add(R.id.fragment_container, AuthorisationFragment())
             .commit()
     }
 
