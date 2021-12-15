@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 
 class AuthorisationFragment : Fragment(R.layout.authorisation_frg) {
@@ -12,6 +13,8 @@ class AuthorisationFragment : Fragment(R.layout.authorisation_frg) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val toolbar = view.findViewById<Toolbar>(R.id.app_toolbar)
 
         listener = context as CheckInput
 

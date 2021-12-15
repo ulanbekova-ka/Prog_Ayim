@@ -2,9 +2,11 @@ package com.kay.prog.ayim
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity(), CheckInput {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,5 +29,13 @@ class MainActivity : AppCompatActivity(), CheckInput {
         } else {
             Toast.makeText(this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, AboutFragment())
+            .addToBackStack(null)
+            .commit()
+        return super.onOptionsItemSelected(item)
     }
 }
