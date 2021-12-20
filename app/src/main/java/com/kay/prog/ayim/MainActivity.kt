@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(), OnItemClicked {
     override fun onItemClicked(item: Int) {
         val frg2 = Fragment2()
         val bundle = Bundle()
-        bundle.putString("key", "Redirected from ITEM -$item")
+        bundle.putString("key", "ITEM -$item")
         frg2.arguments = bundle
 
         supportFragmentManager.beginTransaction()
