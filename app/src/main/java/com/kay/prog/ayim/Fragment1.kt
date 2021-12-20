@@ -24,7 +24,7 @@ class Fragment1 : Fragment(R.layout.fragment1) {
         val adapter = Adapter {
             Toast.makeText(context, "ITEM -$it", Toast.LENGTH_SHORT).show()
 
-            listener.onItemClicked(it)
+            listener.onClick(it)
         }
 
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)

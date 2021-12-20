@@ -1,6 +1,7 @@
 package com.kay.prog.ayim
 
 interface OnItemClicked {
-
-    fun onItemClicked(item: Int)
+    fun onLongClick(item: Int)
+    fun onClick(item: Int)
+    fun yesClicked()
 }

@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 
 class Adapter(
-    private val click: (pos: Int) -> Unit
+    private val click: (pos: Int) -> Unit,
 ) : RecyclerView.Adapter<Adapter.ViewHolder>() {
     private var list = listOf<String>()
 
@@ -29,6 +29,7 @@ class Adapter(
     override fun getItemCount(): Int {
         return list.size
     }
+
     class ViewHolder(
         itemView: View,
         private val click: (pos: Int) -> Unit
@@ -40,6 +41,11 @@ class Adapter(
             itemView.setOnClickListener {
                 click.invoke(adapterPosition)
             }
+
+//            itemView.setOnLongClickListener {
+                //boolean?
+//                click.invoke(adapterPosition)
+//            }
         }
     }
 }
