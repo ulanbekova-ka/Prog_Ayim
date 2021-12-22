@@ -3,13 +3,10 @@ package com.kay.prog.ayim
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
 
 class MainActivity : AppCompatActivity(), OnAuthorisationListener, OnRegistrationListener {
     private lateinit var prefs: SharedPreferences
-    private var count = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,18 +46,8 @@ class MainActivity : AppCompatActivity(), OnAuthorisationListener, OnRegistratio
                 .replace(R.id.frg_container, AppFragment())
                 .addToBackStack(null)
                 .commit()
-        } else if (count == 5) {
-            val changeBtn = findViewById<AppCompatButton>(R.id.change_btn)
-            changeBtn.visibility = View.VISIBLE
-            changeBtn.setOnClickListener {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.frg_container, RegistrationFragment())
-                    .commit()
-            }
-            count = 1
         } else {
             Toast.makeText(this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show()
-            count++
         }
     }
 }

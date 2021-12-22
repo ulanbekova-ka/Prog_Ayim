@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:layout_margin="16dp"
+        android:enabled="false"
         android:text="GO!"
         app:layout_constraintTop_toBottomOf="@id/new_password"
         app:layout_constraintBottom_toBottomOf="parent"
