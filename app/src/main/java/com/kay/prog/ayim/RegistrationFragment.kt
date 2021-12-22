@@ -35,13 +35,13 @@ class RegistrationFragment : Fragment(R.layout.registration_frg) {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != "") {
+                if (s.isNullOrEmpty()) {
+                    loginIsNotEmpty = false
+                } else {
                     if (passwordIsNotEmpty) {
                         newButton.isEnabled = true
                     }
                     loginIsNotEmpty = true
-                } else {
-                    loginIsNotEmpty = false
                 }
             }
         })
@@ -51,13 +51,13 @@ class RegistrationFragment : Fragment(R.layout.registration_frg) {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != "") {
+                if (s.isNullOrEmpty()) {
+                    passwordIsNotEmpty = false
+                } else {
                     if (loginIsNotEmpty) {
                         newButton.isEnabled = true
                     }
                     passwordIsNotEmpty = true
-                } else {
-                    passwordIsNotEmpty = false
                 }
             }
         })
