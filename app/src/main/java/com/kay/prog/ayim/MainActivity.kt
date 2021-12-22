@@ -4,8 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -22,12 +21,12 @@ class MainActivity : AppCompatActivity() {
         val recycler = findViewById<RecyclerView>(R.id.recycler)
 
         recycler.adapter = adapter
-        recycler.layoutManager = LinearLayoutManager(this)
-        recycler.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
+        recycler.layoutManager = GridLayoutManager(this, 2)
+//        recycler.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
 
         val list = mutableListOf<String>()
-        for(i in 0..20) {
-            list.add("ITEM -$i")
+        for(i in 0..21) {
+            list.add("ITEM - $i")
         }
         adapter.setData(list)
     }
