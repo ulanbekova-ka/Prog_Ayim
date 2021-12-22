@@ -2,31 +2,39 @@ package com.kay.prog.ayim
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class AuthorisationFragment : Fragment(R.layout.authorisation_frg) {
-    private lateinit var listener: CheckInput
+    private val correctMail = "kamila@chan.nya"
+    private val correctPassword = "anime"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        listener = context as CheckInput
-
-        val mail = view.findViewById<AppCompatEditText>(R.id.mail)
-        val password = view.findViewById<AppCompatEditText>(R.id.password)
+        val mailLayout = view.findViewById<TextInputLayout>(R.id.mail)
+        val mail = view.findViewById<TextInputEditText>(R.id.mail_txt)
+        val passwordLayout = view.findViewById<TextInputLayout>(R.id.password)
+        val password = view.findViewById<TextInputEditText>(R.id.password_txt)
         val button = view.findViewById<AppCompatButton>(R.id.btn)
 
         button.setOnClickListener {
             val mailText = mail.text.toString()
             val passwordText = password.text.toString()
 
-            if (mailText.isEmpty() || passwordText.isEmpty()) {
-                Toast.makeText(context, "Заполните оба поля", Toast.LENGTH_SHORT).show()
+            if (mailText.isNotEmpty() && passwordText.isNotEmpty()) {
+                if (mailText == correctMail && passwordText == correctPassword) {
+                    (activity as MainActivity).openApp()
+                } else {
+                    mailLayout.error = "Неверный логин или пароль"
+                    passwordLayout.error = "Неверный логин или пароль"
+                }
+            } else if (mailText.isEmpty()) {
+                    mailLayout.error = "Это поле обязательно для заполнения"
             } else {
-                listener.checkInput(mailText, passwordText)
+                    passwordLayout.error = "Это поле обязательно для заполнения"
             }
         }
     }
