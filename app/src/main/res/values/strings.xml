@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ProgAyim</string>
+    <string name="frg1_txt">Fragment 1</string>
+    <string name="frg2_txt">Fragment 2</string>
+    <string name="frg3_txt">Fragment 3</string>
+    <string name="frg4_txt">Fragment 4</string>
+
+    <string name="toolbar">Toolbar Title</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
 </resources>
