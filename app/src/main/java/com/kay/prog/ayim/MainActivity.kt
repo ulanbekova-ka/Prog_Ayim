@@ -17,8 +17,22 @@ class MainActivity : AppCompatActivity() {
 
         btn.setOnClickListener {
             val text = edit.text.toString().trim()
-            val numOfWords = text.split("\\b[а-яА-Я]*[а][я]\\b".toRegex()).size - 1
-            txt.text = "$numOfWords"
+            val listOfWords = text.split("\\s+".toRegex())
+            var maxAs = 0
+            var word = ""
+
+            listOfWords.forEach {
+                if (it.contains('a')) {
+                    val numOfAs = it.count{c -> c == 'a'}
+                    if (maxAs < numOfAs)
+                    {
+                        maxAs = numOfAs
+                        word = it
+                    }
+                }
+            }
+
+            txt.text = "number of maximum 'a's = $maxAs\n in the word: $word"
         }
     }
 }
