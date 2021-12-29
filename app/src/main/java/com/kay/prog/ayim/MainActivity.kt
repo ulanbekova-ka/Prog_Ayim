@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         btn.setOnClickListener {
             val text = edit.text.toString().trim()
-            val numOfWords = text.split("\\b[a-np-zA-NP-Z]*[oO][a-np-zA-NP-Z]*\\b".toRegex()).size - 1
+            val numOfWords = text.split("\\b[а-яА-Я]*[а][я]\\b".toRegex()).size - 1
             txt.text = "$numOfWords"
         }
     }
