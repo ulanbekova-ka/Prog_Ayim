@@ -4,31 +4,48 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.kay.prog.ayim.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    val lastId get() = Injector.preferences
+class MainActivity : AppCompatActivity(), Navigation {
     private lateinit var binding: ActivityMainBinding
+    private var id = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        lastId.setId(0L)
+        initMainFrg()
+    }
 
+    override fun initMainFrg() {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_container, AddFrg())
+            .replace(R.id.fragment_container, MainFrg())
             .commit()
     }
 
-    fun initShowFrg() {
-        var newId = lastId.getId("key")
-        lastId.setId(++newId)
+    override fun initAddFrg() {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, AddFrg())
+            .commit()
+    }
 
+    override fun initShowFrg() {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, ShowFrg())
-            .addToBackStack(null)
             .commit()
+    }
+
+    override fun initEditFrg(id : Long) {
+        this.id = id
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, EditFrg())
+            .commit()
+    }
+
+    override fun getId(): Long {
+        return id
     }
 }

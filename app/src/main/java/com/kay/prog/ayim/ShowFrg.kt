@@ -17,11 +17,12 @@ class ShowFrg : Fragment(R.layout.show_frg) {
         _binding = ShowFrgBinding.bind(view)
 
         binding.apply {
-            val id = (activity as MainActivity).lastId.getId("key")
-            val e = dbInstance.employeeDao().getById(id)
-            txtName.text = e.name
-            txtCompany.text = e.company
-            txtSalary.text = e.salary.toString()
+            // TODO recycler!
+//            val id =
+//            val e = dbInstance.employeeDao().getById(id)
+//            txtName.text = e.name
+//            txtCompany.text = e.company
+//            txtSalary.text = e.salary.toString()
         }
     }
 
