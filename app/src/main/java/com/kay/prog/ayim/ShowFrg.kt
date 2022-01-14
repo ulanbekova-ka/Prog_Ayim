@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.kay.prog.ayim.databinding.ShowFrgBinding
 
 class ShowFrg : Fragment(R.layout.show_frg) {
+
     private var _binding: ShowFrgBinding? = null
     private val binding get() = _binding!!
 
@@ -16,8 +17,8 @@ class ShowFrg : Fragment(R.layout.show_frg) {
         _binding = ShowFrgBinding.bind(view)
 
         binding.apply {
-            // TODO find right id
-            val e = dbInstance.employeeDao().getById(1L)
+            val id = (activity as MainActivity).lastId.getId("key")
+            val e = dbInstance.employeeDao().getById(id)
             txtName.text = e.name
             txtCompany.text = e.company
             txtSalary.text = e.salary.toString()
