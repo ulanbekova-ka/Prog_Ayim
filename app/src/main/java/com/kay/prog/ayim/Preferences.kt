@@ -19,6 +19,6 @@ class PreferencesImpl(context: Context) : Preferences {
     }
 
     override fun getId(key: String): Long {
-        return preferences.getLong(key, 1L)
+        return preferences.getLong(key, 0L)
     }
 }
