@@ -2,7 +2,6 @@ package com.kay.prog.ayim
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.kay.prog.ayim.database.Employee
 import com.kay.prog.ayim.databinding.AddFrgBinding
@@ -23,26 +22,32 @@ class EditFrg : Fragment(R.layout.add_frg) {
 
         binding.apply {
             //show previous info
-            val id = listener.getId()
+            val id = arguments?.getLong("id") ?: 1L
             val oldE = dbInstance.employeeDao().getById(id)
-            editName.hint = oldE.name
-            editCompany.hint = oldE.company
-            editSalary.hint = oldE.salary.toString()
+
+            var name = oldE.name
+            var company = oldE.company
+            var salary = oldE.salary.toString()
+
+            editName.hint = name
+            editCompany.hint = company
+            editSalary.hint = salary
 
             btnSave.setOnClickListener {
-                if (editName.text.isNullOrEmpty() || editCompany.text.isNullOrEmpty() || editSalary.text.isNullOrEmpty()) {
-                    Toast.makeText(context, "Заполните все поля", Toast.LENGTH_SHORT).show()
-                } else {
-                    val e = Employee(
-                        id = listener.getId(),
-                        name = editName.text.toString(),
-                        company = editCompany.text.toString(),
-                        salary = editSalary.text.toString().toInt()
-                    )
-                    dbInstance.employeeDao().update(e)
-
-                    listener.initMainFrg()
+                if (!editName.text.isNullOrEmpty()) {
+                    name = editName.text.toString()
                 }
+                if (!editCompany.text.isNullOrEmpty()) {
+                    company = editCompany.text.toString()
+                }
+                if (!editSalary.text.isNullOrEmpty()) {
+                    salary = editSalary.text.toString()
+                }
+
+                val e = Employee(id, name, company, salary.toInt())
+                dbInstance.employeeDao().update(e)
+
+                listener.initMainFrg()
             }
         }
     }

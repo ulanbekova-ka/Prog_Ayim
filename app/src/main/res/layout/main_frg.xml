@@ -14,20 +14,8 @@
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnShow"
-        app:layout_constraintBottom_toTopOf="@id/txt"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textSize="22sp"
-        android:text="Show All"
-        app:layout_constraintTop_toTopOf="@id/btnAdd"
-        app:layout_constraintStart_toEndOf="@id/btnAdd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/btnAdd"/>
+        app:layout_constraintBottom_toTopOf="@id/txt"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt"
@@ -64,8 +52,8 @@
         android:textSize="22sp"
         android:text="Edit"
         app:layout_constraintTop_toBottomOf="@id/editId"
-        app:layout_constraintStart_toStartOf="@id/btnAdd"
-        app:layout_constraintEnd_toEndOf="@id/btnAdd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnDelete"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -76,8 +64,8 @@
         android:textSize="22sp"
         android:text="Delete"
         app:layout_constraintTop_toTopOf="@id/btnEdit"
-        app:layout_constraintStart_toStartOf="@id/btnShow"
-        app:layout_constraintEnd_toEndOf="@id/btnShow"
+        app:layout_constraintStart_toEndOf="@id/btnEdit"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/btnEdit"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

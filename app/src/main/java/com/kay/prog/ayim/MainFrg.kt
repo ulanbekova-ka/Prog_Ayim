@@ -23,14 +23,17 @@ class MainFrg : Fragment(R.layout.main_frg) {
         binding.apply {
             btnAdd.setOnClickListener { listener.initAddFrg() }
 
-            btnShow.setOnClickListener { listener.initShowFrg() }
-
             btnEdit.setOnClickListener {
                 if (editId.text.isNullOrEmpty()) {
                     Toast.makeText(context, "Введите id", Toast.LENGTH_SHORT).show()
                 } else {
                     val id = editId.text.toString().toLong()
-                    listener.initEditFrg(id)
+                    val e = dbInstance.employeeDao().getById(id)
+                    if (e == null) {
+                        Toast.makeText(context, "Записи с id $id не существует", Toast.LENGTH_SHORT).show()
+                    } else {
+                        listener.initEditFrg(id)
+                    }
                 }
             }
 
@@ -40,8 +43,12 @@ class MainFrg : Fragment(R.layout.main_frg) {
                 } else {
                     val id = editId.text.toString().toLong()
                     val e = dbInstance.employeeDao().getById(id)
-                    dbInstance.employeeDao().delete(e)
-                    Toast.makeText(context, "Запись с id $id удалена", Toast.LENGTH_LONG).show()
+                    if (e == null) {
+                        Toast.makeText(context, "Записи с id $id не существует", Toast.LENGTH_SHORT).show()
+                    } else {
+                        dbInstance.employeeDao().delete(e)
+                        Toast.makeText(context, "Запись с id $id удалена", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         }

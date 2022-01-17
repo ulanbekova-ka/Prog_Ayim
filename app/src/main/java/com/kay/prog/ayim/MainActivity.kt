@@ -6,7 +6,6 @@ import com.kay.prog.ayim.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), Navigation {
     private lateinit var binding: ActivityMainBinding
-    private var id = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,22 +29,15 @@ class MainActivity : AppCompatActivity(), Navigation {
             .commit()
     }
 
-    override fun initShowFrg() {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container, ShowFrg())
-            .commit()
-    }
-
     override fun initEditFrg(id : Long) {
-        this.id = id
+        val frg = EditFrg()
+        val bundle = Bundle()
+        bundle.putLong("id", id)
+        frg.arguments = bundle
+
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment_container, EditFrg())
+            .replace(R.id.fragment_container, frg)
             .commit()
-    }
-
-    override fun getId(): Long {
-        return id
     }
 }
