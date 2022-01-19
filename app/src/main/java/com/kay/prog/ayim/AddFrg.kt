@@ -34,7 +34,7 @@ class AddFrg : Fragment(R.layout.add_frg) {
                     )
                     dbInstance.employeeDao().insert(e)
 
-                    listener.initMainFrg()
+                    Toast.makeText(context, "Запись добавлена", Toast.LENGTH_LONG).show()
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.kay.prog.ayim
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.kay.prog.ayim.database.Employee
 import com.kay.prog.ayim.databinding.AddFrgBinding
@@ -22,7 +23,7 @@ class EditFrg : Fragment(R.layout.add_frg) {
 
         binding.apply {
             //show previous info
-            val id = arguments?.getLong("id") ?: 1L
+            val id = arguments?.getLong(MainActivity.ID_KEY) ?: 1L
             val oldE = dbInstance.employeeDao().getById(id)
 
             var name = oldE.name
@@ -47,7 +48,7 @@ class EditFrg : Fragment(R.layout.add_frg) {
                 val e = Employee(id, name, company, salary.toInt())
                 dbInstance.employeeDao().update(e)
 
-                listener.initMainFrg()
+                Toast.makeText(context, "Запись изменена", Toast.LENGTH_LONG).show()
             }
         }
     }

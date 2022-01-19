@@ -2,70 +2,29 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scrollbars="vertical"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textSize="22sp"
-        android:text="Add new"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="+"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/txt"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="OR"
-        android:inputType="number"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/btnAdd"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/editId"/>
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:inputType="number"
-        android:textColor="@color/black"
-        android:hint="id:"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/txt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnEdit"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textSize="22sp"
-        android:text="Edit"
-        app:layout_constraintTop_toBottomOf="@id/editId"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnDelete"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textSize="22sp"
-        android:text="Delete"
-        app:layout_constraintTop_toTopOf="@id/btnEdit"
-        app:layout_constraintStart_toEndOf="@id/btnEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/btnEdit"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

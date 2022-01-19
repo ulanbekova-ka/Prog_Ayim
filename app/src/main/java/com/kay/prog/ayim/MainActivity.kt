@@ -26,18 +26,38 @@ class MainActivity : AppCompatActivity(), Navigation {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, AddFrg())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun initEmployeeFrg(id : Long) {
+        val frg = EmployeeFrg()
+        val bundle = Bundle()
+        bundle.putLong(ITEM_KEY, id)
+        frg.arguments = bundle
+
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, frg)
+            .addToBackStack(null)
             .commit()
     }
 
     override fun initEditFrg(id : Long) {
         val frg = EditFrg()
         val bundle = Bundle()
-        bundle.putLong("id", id)
+        bundle.putLong(ID_KEY, id)
         frg.arguments = bundle
 
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, frg)
+            .addToBackStack(null)
             .commit()
+    }
+
+    companion object {
+        const val ITEM_KEY = "item"
+        const val ID_KEY = "id"
     }
 }

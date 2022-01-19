@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:viewBindingIgnore="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        tools:text="10"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        android:layout_weight="3"
+        tools:text="Kamila"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        android:layout_weight="3"
+        tools:text="Google"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_salary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        android:layout_weight="3"
+        tools:text="1000000"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

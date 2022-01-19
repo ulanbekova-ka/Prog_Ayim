@@ -2,12 +2,13 @@ package com.kay.prog.ayim
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.kay.prog.ayim.databinding.MainFrgBinding
 
 class MainFrg : Fragment(R.layout.main_frg) {
-    private var _binding: MainFrgBinding? = null
+    private var _binding: MainFrgBinding ?= null
     private val binding get() = _binding!!
 
     private lateinit var listener : Navigation
@@ -21,38 +22,24 @@ class MainFrg : Fragment(R.layout.main_frg) {
         listener = context as Navigation
 
         binding.apply {
-            btnAdd.setOnClickListener { listener.initAddFrg() }
-
-            btnEdit.setOnClickListener {
-                if (editId.text.isNullOrEmpty()) {
-                    Toast.makeText(context, "Введите id", Toast.LENGTH_SHORT).show()
-                } else {
-                    val id = editId.text.toString().toLong()
-                    val e = dbInstance.employeeDao().getById(id)
-                    if (e == null) {
-                        Toast.makeText(context, "Записи с id $id не существует", Toast.LENGTH_SHORT).show()
-                    } else {
-                        listener.initEditFrg(id)
-                    }
-                }
+            /** Adapter */
+            val adapter = ItemAdapter {
+                listener.initEmployeeFrg(it)
             }
 
-            btnDelete.setOnClickListener {
-                if (editId.text.isNullOrEmpty()) {
-                    Toast.makeText(context, "Введите id", Toast.LENGTH_SHORT).show()
-                } else {
-                    val id = editId.text.toString().toLong()
-                    val e = dbInstance.employeeDao().getById(id)
-                    if (e == null) {
-                        Toast.makeText(context, "Записи с id $id не существует", Toast.LENGTH_SHORT).show()
-                    } else {
-                        dbInstance.employeeDao().delete(e)
-                        Toast.makeText(context, "Запись с id $id удалена", Toast.LENGTH_LONG).show()
-                    }
-                }
+            recycler.adapter = adapter
+            recycler.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
+
+            val list = dbInstance.employeeDao().getAll()
+            adapter.setData(list)
+
+            /** Add button */
+            btnAdd.setOnClickListener {
+                listener.initAddFrg()
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
