@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.kay.prog.ayim.database.Employee
 import com.kay.prog.ayim.databinding.EmployeeFrgBinding
 
 class EmployeeFrg : Fragment(R.layout.employee_frg) {
@@ -34,8 +36,7 @@ class EmployeeFrg : Fragment(R.layout.employee_frg) {
             }
 
             btnDelete.setOnClickListener {
-                dbInstance.employeeDao().delete(e)
-                Toast.makeText(context, "Запись удалена", Toast.LENGTH_LONG).show()
+                showDialog(e)
             }
         }
     }
@@ -43,5 +44,18 @@ class EmployeeFrg : Fragment(R.layout.employee_frg) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun showDialog(e : Employee) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Удалить запись?")
+            .setPositiveButton("Да") { _, _ ->
+                dbInstance.employeeDao().delete(e)
+                Toast.makeText(context, "Запись удалена", Toast.LENGTH_LONG).show()
+            }
+            .setNegativeButton("Нет") { dialog, _ ->
+                dialog.cancel()
+            }
+            .show()
     }
 }
