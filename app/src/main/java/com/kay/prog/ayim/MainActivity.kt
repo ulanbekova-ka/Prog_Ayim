@@ -13,25 +13,15 @@ class MainActivity : AppCompatActivity(), OnItemClicked {
             .commit()
     }
 
-    override fun onClick(item: Int) {
+    override fun initFrg2(msg : String) {
         val frg2 = Fragment2()
         val bundle = Bundle()
-        bundle.putString("key", "Redirected from ITEM -$item")
+        bundle.putString("key", msg)
         frg2.arguments = bundle
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, frg2)
             .addToBackStack(null)
             .commit()
-    }
-
-    override fun onLongClick(item: Int) {
-        val dialog = DialogFrg()
-        dialog.show(supportFragmentManager, "dialog")
-    }
-
-    override fun yesClicked() {
-        //Delete item - from onLongClick
-        TODO("Not yet implemented")
     }
 }

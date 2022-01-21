@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 
 class Adapter(
-    private val click: (pos: Int) -> Unit,
+    private val click: (pos: Int, isLongClick: Boolean) -> Unit
 ) : RecyclerView.Adapter<Adapter.ViewHolder>() {
     private var list = listOf<String>()
 
@@ -32,20 +32,20 @@ class Adapter(
 
     class ViewHolder(
         itemView: View,
-        private val click: (pos: Int) -> Unit
+        private val click: (pos: Int, isLongClick: Boolean) -> Unit
     ): RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: String) {
             val txt = itemView.findViewById<AppCompatTextView>(R.id.item_txt)
             txt.text = item
             itemView.setOnClickListener {
-                click.invoke(adapterPosition)
+                click.invoke(adapterPosition, false)
             }
 
-//            itemView.setOnLongClickListener {
-                //boolean?
-//                click.invoke(adapterPosition)
-//            }
+            itemView.setOnLongClickListener {
+                click.invoke(adapterPosition, true)
+                true
+            }
         }
     }
 }
