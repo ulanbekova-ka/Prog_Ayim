@@ -16,14 +16,18 @@ class MainActivity : AppCompatActivity() {
 
         btn.setOnClickListener {
             var text = edit.text.toString()
-            var temp = text.replace(',', '*')
-            text = temp.replace(':', '*')
-            temp = text.replace(';', '*')
-            text = temp.replace('!', '*')
-            temp = text.replace('?', '*')
-            text = temp.replace('.', '*')
+            var temp = text.replace("1", "один ")
+            text = temp.replace("2", "два ")
+            temp = text.replace("3", "три ")
+            text = temp.replace("4", "четыре ")
+            temp = text.replace("5", "пять ")
+            text = temp.replace("6", "шесть ")
+            temp = text.replace("7", "семь ")
+            text = temp.replace("8", "восемь ")
+            temp = text.replace("9", "девять ")
+            text = temp.replace("0", "ноль ")
 
-            edit.text = Editable.Factory.getInstance().newEditable(text)
+            edit.text = Editable.Factory.getInstance().newEditable(text.trim())
         }
     }
 }
