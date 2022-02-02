@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.kay.prog.ayim.database.Employee
 import com.kay.prog.ayim.databinding.AddFrgBinding
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class AddFrg : Fragment(R.layout.add_frg) {
     private var _binding: AddFrgBinding? = null
@@ -32,9 +34,17 @@ class AddFrg : Fragment(R.layout.add_frg) {
                         company = editCompany.text.toString(),
                         salary = editSalary.text.toString().toInt()
                     )
-                    dbInstance.employeeDao().insert(e)
 
-                    Toast.makeText(context, "Запись добавлена", Toast.LENGTH_LONG).show()
+                    dbInstance.employeeDao().insert(e)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnComplete {
+                            Toast.makeText(context, "Запись добавлена", Toast.LENGTH_LONG).show()
+                        }
+                        .doOnError {
+                            Toast.makeText(context, "Возникла ошибка!", Toast.LENGTH_LONG).show()
+                        }
+                        .subscribe()
                 }
             }
         }
