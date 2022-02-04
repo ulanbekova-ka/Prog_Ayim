@@ -41,9 +41,6 @@ class AddFrg : Fragment(R.layout.add_frg) {
                         .doOnComplete {
                             Toast.makeText(context, "Запись добавлена", Toast.LENGTH_LONG).show()
                         }
-                        .doOnError {
-                            Toast.makeText(context, "Возникла ошибка!", Toast.LENGTH_LONG).show()
-                        }
                         .subscribe()
                 }
             }

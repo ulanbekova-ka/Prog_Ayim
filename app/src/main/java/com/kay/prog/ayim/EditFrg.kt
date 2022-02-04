@@ -42,9 +42,6 @@ class EditFrg : Fragment(R.layout.add_frg) {
                     editCompany.hint = company
                     editSalary.hint = salary
                 }
-                .doOnError {
-                    Toast.makeText(context, "Возникла ошибка!", Toast.LENGTH_LONG).show()
-                }
                 .subscribe()
 
             btnSave.setOnClickListener {
@@ -65,9 +62,6 @@ class EditFrg : Fragment(R.layout.add_frg) {
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnComplete {
                         Toast.makeText(context, "Запись изменена", Toast.LENGTH_LONG).show()
-                    }
-                    .doOnError {
-                        Toast.makeText(context, "Возникла ошибка!", Toast.LENGTH_LONG).show()
                     }
                     .subscribe()
             }

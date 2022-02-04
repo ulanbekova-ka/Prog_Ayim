@@ -2,7 +2,6 @@ package com.kay.prog.ayim
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
@@ -39,9 +38,6 @@ class MainFrg : Fragment(R.layout.main_frg) {
                 .doOnNext {
                     adapter.setData(it)
                 }
-                .doOnError {
-                    Toast.makeText(context, "Возникла ошибка!", Toast.LENGTH_LONG).show()
-                }
                 .subscribe()
 
             /** Add button */
@@ -50,7 +46,6 @@ class MainFrg : Fragment(R.layout.main_frg) {
             }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -39,9 +39,6 @@ class EmployeeFrg : Fragment(R.layout.employee_frg) {
                     eCompany.text = it.company
                     eSalary.text = it.salary.toString()
                 }
-                .doOnError {
-                    Toast.makeText(context, "Возникла ошибка!", Toast.LENGTH_LONG).show()
-                }
                 .subscribe()
 
             btnEdit.setOnClickListener {
@@ -68,9 +65,6 @@ class EmployeeFrg : Fragment(R.layout.employee_frg) {
                     .observeOn(AndroidSchedulers.mainThread())
                     .doOnComplete {
                         Toast.makeText(context, "Запись удалена", Toast.LENGTH_LONG).show()
-                    }
-                    .doOnError {
-                        Toast.makeText(context, "Возникла ошибка!", Toast.LENGTH_LONG).show()
                     }
                     .subscribe()
             }
