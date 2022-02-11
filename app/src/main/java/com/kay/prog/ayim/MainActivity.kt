@@ -15,24 +15,20 @@ class MainActivity : AppCompatActivity() {
         val edit = findViewById<AppCompatEditText>(R.id.edit)
         val btn = findViewById<AppCompatButton>(R.id.btn)
 
+        txt.text = getString(R.string.txt, 0)
+
         btn.setOnClickListener {
             val text = edit.text.toString().trim()
             val listOfWords = text.split("\\s+".toRegex())
-            var maxAs = 0
-            var word = ""
 
+            var numOfWords = 0
             listOfWords.forEach {
-                if (it.contains('a')) {
-                    val numOfAs = it.count{c -> c == 'a'}
-                    if (maxAs < numOfAs)
-                    {
-                        maxAs = numOfAs
-                        word = it
-                    }
+                if (it.length % 2 == 0 && it.isNotEmpty()) {
+                    numOfWords++
                 }
             }
 
-            txt.text = "number of maximum 'a's = $maxAs\n in the word: $word"
+            txt.text = getString(R.string.txt, numOfWords)
         }
     }
 }
