@@ -13,7 +13,7 @@ class App : Application() {
 
     private val isDebug get() = BuildConfig.DEBUG
 
-    lateinit var githubApi: Api
+    lateinit var episodesApi: EpisodesApi
 
     override fun onCreate() {
         super.onCreate()
@@ -28,13 +28,13 @@ class App : Application() {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_MOCK)
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        githubApi = retrofit.create(Api::class.java)
+        episodesApi = retrofit.create(EpisodesApi::class.java)
     }
 
     private fun httpLoggingInterceptor(): HttpLoggingInterceptor {
@@ -54,8 +54,7 @@ class App : Application() {
     }
 
     companion object {
-        const val BASE_MOCK = "https://5a8507bd-1cec-40bc-b9f5-605b5b73e40a.mock.pstmn.io"
-        const val BASE_URL = "https://api.github.com/"
+        const val BASE_URL = "https://breakingbadapi.com/api/"
         const val TIMEOUT = 300L
 
         private var mInstance: App? = null
