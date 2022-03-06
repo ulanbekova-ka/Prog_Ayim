@@ -7,11 +7,11 @@ data class RepoResult(
 data class Item(
     val id: Long?,
     val name: String?,
-    val fullName: String?,
-    val owner: Owner,
+    val full_name: String?,
     val private: Boolean,
-    val htmlUrl: String?,
+    val owner: Owner?,
+    val html_url: String?,
     val description: String?
 )
 
-data class Owner(val login: String?, val id: Long?, val avatarUrl: String?)
+data class Owner(val login: String?, val id: Long?, val avatar_url: String?)
