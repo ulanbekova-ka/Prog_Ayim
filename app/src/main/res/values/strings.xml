@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ProgAyim</string>
+    <string name="title">Title: %s</string>
+    <string name="season">Season: %d</string>
+    <string name="aired">Aired: %s</string>
+    <string name="character">Characters: %s</string>
+    <string name="episode">Episode: %d</string>
+    <string name="series">Series: %s</string>
 </resources>

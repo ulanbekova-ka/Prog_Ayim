@@ -38,13 +38,12 @@ class Adapter(
     ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(episode: Episode) {
-
             val title = itemView.findViewById<AppCompatTextView>(R.id.title)
             title.text = episode.title
 
-//            itemView.setOnClickListener {
-//                click.invoke(episode.id)
-//            }
+            itemView.setOnClickListener {
+                click.invoke(episode.episode_id)
+            }
         }
     }
 }

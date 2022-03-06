@@ -1,7 +1,7 @@
 package com.kay.prog.ayim.api
 
 data class Episode(
-    val episode_id: Long?,
+    val episode_id: Long,
     val title: String?,
     val season: Int?,
     val air_date: String?,
