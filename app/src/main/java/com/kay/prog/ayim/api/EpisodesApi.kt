@@ -1,4 +1,4 @@
-package com.kay.prog.ayim
+package com.kay.prog.ayim.api
 
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface EpisodesApi {
 
     @GET("episodes")
-    fun getEpisodes(): Observable<MutableList<Episode>>
+    fun getEpisodes(): Observable<List<Episode>>
 }

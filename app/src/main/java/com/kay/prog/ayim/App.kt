@@ -2,6 +2,7 @@ package com.kay.prog.ayim
 
 import android.app.Application
 import android.util.Log
+import com.kay.prog.ayim.api.EpisodesApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package com.kay.prog.ayim
+package com.kay.prog.ayim.api
 
 data class Episode(
     val episode_id: Long?,
