@@ -17,13 +17,6 @@ class MainActivity : AppCompatActivity(), Navigate {
             .commit()
     }
 
-    override fun openListFrg() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.frg_container, EpisodesListFrg())
-            .addToBackStack(null)
-            .commit()
-    }
-
     override fun openEpisode(id: Long?) {
         val fragment = EpisodeFrg()
         val bundle = Bundle()

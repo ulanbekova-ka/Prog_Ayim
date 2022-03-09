@@ -5,14 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
-import com.kay.prog.ayim.api.Episode
+import com.kay.prog.ayim.database.Episode
 
 class Adapter(
     private val click: (id: Long) -> Unit
 ) : RecyclerView.Adapter<Adapter.ViewHolder>() {
     private var list: List<Episode> = listOf()
 
-    fun setData(list: List<Episode>) {
+    fun setData(list: MutableList<Episode>) {
         this.list = list
         notifyDataSetChanged()
     }
@@ -42,7 +42,7 @@ class Adapter(
             title.text = episode.title
 
             itemView.setOnClickListener {
-                click.invoke(episode.episode_id)
+                click.invoke(episode.id)
             }
         }
     }

@@ -2,7 +2,9 @@ package com.kay.prog.ayim
 
 import android.app.Application
 import android.util.Log
+import androidx.room.Room
 import com.kay.prog.ayim.api.EpisodesApi
+import com.kay.prog.ayim.database.AppDatabase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class App : Application() {
+    lateinit var database: AppDatabase
 
     private val isDebug get() = BuildConfig.DEBUG
 
@@ -19,6 +22,11 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         mInstance = this
+
+        database = Room.databaseBuilder(this, AppDatabase::class.java, "database")
+            .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
+            .build()
 
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
