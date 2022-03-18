@@ -47,16 +47,19 @@ class MainFrg : Fragment(R.layout.frg_main) {
     private fun getList() {
         rickAndMortyApi.getAllCharacters()
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnNext { response ->
+            .map { response ->
                 val list = mutableListOf<CharacterEntity>()
                 response.results.forEach {
                     val character = CharacterEntity(it.id, it.name, it.status, it.species, it.type, it.gender, it.origin.name, it.location.name, it.image)
                     list.add(character)
                 }
-
                 dbInstance.characterDao().insertList(list)
-                adapter.setData(list)
+                list.toList()
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .onErrorResumeNext ( dbInstance.characterDao().getAll() )
+            .doOnNext {
+                adapter.setData(it)
             }
             .doFinally {
                 binding.swipe.isRefreshing = false
