@@ -56,8 +56,8 @@ class MainFrg : Fragment(R.layout.frg_main) {
                 dbInstance.characterDao().insertList(list)
                 list.toList()
             }
-            .observeOn(AndroidSchedulers.mainThread())
             .onErrorResumeNext ( dbInstance.characterDao().getAll() )
+            .observeOn(AndroidSchedulers.mainThread())
             .doOnNext {
                 adapter.setData(it)
             }
