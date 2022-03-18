@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.kay.prog.ayim.api.Response
 import com.kay.prog.ayim.database.CharacterEntity
 import com.kay.prog.ayim.databinding.FrgMainBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -28,6 +29,9 @@ class MainFrg : Fragment(R.layout.frg_main) {
         listener = context as Navigate
 
         getList()
+        dbInstance.characterDao().getAll().observe(viewLifecycleOwner) {
+            adapter.setData(it)
+        }
 
         adapter = Adapter {
             listener.openItem(it)
@@ -47,20 +51,22 @@ class MainFrg : Fragment(R.layout.frg_main) {
     private fun getList() {
         rickAndMortyApi.getAllCharacters()
             .subscribeOn(Schedulers.io())
-            .map { response ->
+            .map {
+                Thread.sleep(5000)
+                it
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext { response ->
                 val list = mutableListOf<CharacterEntity>()
                 response.results.forEach {
                     val character = CharacterEntity(it.id, it.name, it.status, it.species, it.type, it.gender, it.origin.name, it.location.name, it.image)
                     list.add(character)
                 }
                 dbInstance.characterDao().insertList(list)
-                list.toList()
             }
-            .onErrorResumeNext ( dbInstance.characterDao().getAll() )
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnNext {
-                adapter.setData(it)
-            }
+            .onErrorReturnItem(
+                Response(mutableListOf())
+            )
             .doFinally {
                 binding.swipe.isRefreshing = false
             }
