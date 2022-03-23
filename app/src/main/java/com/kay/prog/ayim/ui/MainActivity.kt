@@ -1,7 +1,9 @@
-package com.kay.prog.ayim
+package com.kay.prog.ayim.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.kay.prog.ayim.extensions.Navigate
+import com.kay.prog.ayim.R
 import com.kay.prog.ayim.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), Navigate {

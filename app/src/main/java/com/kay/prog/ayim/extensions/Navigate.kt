@@ -1,4 +1,4 @@
-package com.kay.prog.ayim
+package com.kay.prog.ayim.extensions
 
 interface Navigate {
     fun openMainFrg()

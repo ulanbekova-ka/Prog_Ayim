@@ -1,9 +1,11 @@
-package com.kay.prog.ayim
+package com.kay.prog.ayim.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.kay.prog.ayim.Injector
+import com.kay.prog.ayim.R
 import com.kay.prog.ayim.databinding.FrgCharacterBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
