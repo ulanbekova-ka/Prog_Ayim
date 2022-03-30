@@ -2,6 +2,7 @@ package com.kay.prog.ayim.ui.main
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kay.prog.ayim.ui.Navigate
 import com.kay.prog.ayim.R
 import com.kay.prog.ayim.databinding.FrgMainBinding
+import com.kay.prog.ayim.ui.Event
 import com.kay.prog.ayim.ui.details.CharacterFrg
 
 class MainFrg : Fragment(R.layout.frg_main) {
@@ -45,16 +47,22 @@ class MainFrg : Fragment(R.layout.frg_main) {
             recycler.layoutManager = LinearLayoutManager(requireContext())
             recycler.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
 
-            swipe.setOnRefreshListener {
-                vm.loadCharacters()
-                swipe.isRefreshing = false
-            }
+            swipe.setOnRefreshListener { vm.loadCharacters() }
         }
     }
 
     private fun subscribeToLiveData() {
         vm.charactersLiveData.observe(viewLifecycleOwner) {
             adapter.setData(it)
+        }
+
+        vm.event.observe(viewLifecycleOwner) {
+            when(it) {
+                is Event.ShowToast ->
+                    Toast.makeText(requireContext(), getString(it.resId), Toast.LENGTH_SHORT).show()
+                is Event.ShowLoading -> binding.swipe.isRefreshing = true
+                is Event.StopLoading -> binding.swipe.isRefreshing = false
+            }
         }
     }
 

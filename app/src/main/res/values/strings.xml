@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">My App</string>
+
     <string name="name">Name: %s</string>
     <string name="status">Status: %s</string>
     <string name="species">Species: %s</string>
@@ -7,4 +8,9 @@
     <string name="gender">Gender: %s</string>
     <string name="location">Location: %s</string>
     <string name="origin">Origin: %s</string>
+
+    <string name="no_internet">NO INTERNET</string>
+    <string name="unknown_error"> UNKNOWN ERROR</string>
+    <string name="loading"> LOADING</string>
+    <string name="finished_loading">LOADING STOPPED</string>
 </resources>
