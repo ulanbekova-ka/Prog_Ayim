@@ -1,4 +1,4 @@
-package com.kay.prog.ayim.ui
+package com.kay.prog.ayim.ui.main
 
 import android.view.LayoutInflater
 import android.view.View

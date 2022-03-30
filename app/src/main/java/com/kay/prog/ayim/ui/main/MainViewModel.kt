@@ -1,4 +1,4 @@
-package com.kay.prog.ayim.ui
+package com.kay.prog.ayim.ui.main
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

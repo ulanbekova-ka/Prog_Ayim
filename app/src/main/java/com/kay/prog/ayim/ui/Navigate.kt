@@ -1,4 +1,4 @@
-package com.kay.prog.ayim.extensions
+package com.kay.prog.ayim.ui
 
 import androidx.fragment.app.Fragment
 

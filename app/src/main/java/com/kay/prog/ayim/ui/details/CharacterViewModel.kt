@@ -1,10 +1,11 @@
-package com.kay.prog.ayim.ui
+package com.kay.prog.ayim.ui.details
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.kay.prog.ayim.App
+import com.kay.prog.ayim.ui.Event
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

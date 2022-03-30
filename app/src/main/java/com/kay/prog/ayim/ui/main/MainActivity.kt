@@ -1,11 +1,11 @@
-package com.kay.prog.ayim.ui
+package com.kay.prog.ayim.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.kay.prog.ayim.extensions.Navigate
 import com.kay.prog.ayim.R
 import com.kay.prog.ayim.databinding.ActivityMainBinding
+import com.kay.prog.ayim.ui.Navigate
 
 class MainActivity : AppCompatActivity(), Navigate {
     private lateinit var binding: ActivityMainBinding

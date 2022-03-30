@@ -1,4 +1,4 @@
-package com.kay.prog.ayim.ui
+package com.kay.prog.ayim.ui.main
 
 import android.os.Bundle
 import android.view.View
@@ -7,9 +7,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.kay.prog.ayim.extensions.Navigate
+import com.kay.prog.ayim.ui.Navigate
 import com.kay.prog.ayim.R
 import com.kay.prog.ayim.databinding.FrgMainBinding
+import com.kay.prog.ayim.ui.details.CharacterFrg
 
 class MainFrg : Fragment(R.layout.frg_main) {
     private var _binding: FrgMainBinding? = null
