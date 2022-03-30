@@ -30,12 +30,11 @@ class MainFrg : Fragment(R.layout.frg_main) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FrgMainBinding.bind(view)
 
-        configureRecycler()
+        setupViews()
         subscribeToLiveData()
-        configureSwipe()
     }
 
-    private fun configureRecycler() {
+    private fun setupViews() {
         adapter = Adapter {
             listener.openItem(it)
         }
@@ -44,18 +43,17 @@ class MainFrg : Fragment(R.layout.frg_main) {
             recycler.adapter = adapter
             recycler.layoutManager = LinearLayoutManager(requireContext())
             recycler.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
+
+            swipe.setOnRefreshListener {
+                vm.loadCharacters()
+                swipe.isRefreshing = false
+            }
         }
     }
 
     private fun subscribeToLiveData() {
         vm.charactersLiveData.observe(viewLifecycleOwner) {
             adapter.setData(it)
-        }
-    }
-
-    private fun configureSwipe() {
-        binding.swipe.setOnRefreshListener {
-            binding.swipe.isRefreshing = false
         }
     }
 

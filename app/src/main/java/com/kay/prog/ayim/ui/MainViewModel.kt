@@ -22,7 +22,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         loadCharacters()
     }
 
-    private fun loadCharacters() {
+    fun loadCharacters() {
         compositeDisposable.add(
             getApplication<App>().rickAndMortyApi.getAllCharacters()
                 .subscribeOn(Schedulers.io())
