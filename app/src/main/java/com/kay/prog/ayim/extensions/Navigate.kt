@@ -1,6 +1,7 @@
 package com.kay.prog.ayim.extensions
 
+import androidx.fragment.app.Fragment
+
 interface Navigate {
-    fun openMainFrg()
-    fun openItem(id: Long?)
+    fun openFragment(fragment : Fragment)
 }

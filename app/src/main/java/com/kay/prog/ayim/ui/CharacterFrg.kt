@@ -47,6 +47,13 @@ class CharacterFrg : Fragment (R.layout.frg_character) {
         }
     }
 
+    companion object {
+        fun newInstance(id: Long): CharacterFrg {
+            val args = Bundle().apply { putLong("id", id) }
+            return CharacterFrg().apply { arguments = args }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

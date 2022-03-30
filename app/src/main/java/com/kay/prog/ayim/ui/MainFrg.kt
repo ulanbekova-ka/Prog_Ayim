@@ -36,7 +36,7 @@ class MainFrg : Fragment(R.layout.frg_main) {
 
     private fun setupViews() {
         adapter = Adapter {
-            listener.openItem(it)
+            listener.openFragment(CharacterFrg.newInstance(it))
         }
 
         binding.apply {

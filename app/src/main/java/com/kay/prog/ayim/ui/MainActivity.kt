@@ -2,6 +2,7 @@ package com.kay.prog.ayim.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.kay.prog.ayim.extensions.Navigate
 import com.kay.prog.ayim.R
 import com.kay.prog.ayim.databinding.ActivityMainBinding
@@ -14,30 +15,15 @@ class MainActivity : AppCompatActivity(), Navigate {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.frg_container, MainFrg())
-            .commit()
-    }
-
-    override fun openMainFrg() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.frg_container, MainFrg())
-            .addToBackStack(null)
-            .commit()
-    }
-
-    override fun openItem(id: Long?) {
-        val fragment = CharacterFrg()
-        val bundle = Bundle()
-        if (id != null) {
-            bundle.putLong("id", id)
+        if (savedInstanceState == null) {
+            openFragment(MainFrg())
         }
+    }
 
-        fragment.arguments = bundle
+    override fun openFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.frg_container, fragment)
             .addToBackStack(null)
             .commit()
     }
-
 }
