@@ -16,14 +16,18 @@ class MainActivity : AppCompatActivity(), Navigate {
         setContentView(binding.root)
 
         if (savedInstanceState == null) {
-            openFragment(MainFrg())
+            openFragment(MainFrg(), false)
         }
     }
 
-    override fun openFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.frg_container, fragment)
-            .addToBackStack(null)
+    override fun openFragment(fragment: Fragment, addToBackStack: Boolean?) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.frg_container, fragment).apply {
+                if (addToBackStack == true) {
+                    addToBackStack(null)
+                }
+            }
             .commit()
     }
 }
