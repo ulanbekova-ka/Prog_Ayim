@@ -1,7 +1,7 @@
 package com.kay.prog.ayim.ui
 
 import androidx.annotation.StringRes
-import com.kay.prog.ayim.database.CharacterEntity
+import com.kay.prog.ayim.data.models.CharacterEntity
 
 sealed class Event {
     class ShowToast(@StringRes val resId: Int): Event()

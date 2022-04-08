@@ -4,8 +4,8 @@ import android.app.Application
 import android.util.Log
 import androidx.room.Room
 import androidx.viewbinding.BuildConfig
-import com.kay.prog.ayim.api.RickAndMortyApi
-import com.kay.prog.ayim.database.AppDatabase
+import com.kay.prog.ayim.data.network.RickAndMortyApi
+import com.kay.prog.ayim.data.database.AppDatabase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

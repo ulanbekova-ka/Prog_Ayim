@@ -1,6 +1,6 @@
-package com.kay.prog.ayim.api
+package com.kay.prog.ayim.data.models
 
-data class Response(
+data class ResponseDto(
     val results: MutableList<Item>
 )
 

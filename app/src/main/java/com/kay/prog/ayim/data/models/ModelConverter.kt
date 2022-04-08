@@ -1,7 +1,4 @@
-package com.kay.prog.ayim.extensions
-
-import com.kay.prog.ayim.api.Item
-import com.kay.prog.ayim.database.CharacterEntity
+package com.kay.prog.ayim.data.models
 
 fun Item.toCharacterEntity(): CharacterEntity {
 

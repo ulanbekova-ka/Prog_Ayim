@@ -6,17 +6,23 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.kay.prog.ayim.App
 import com.kay.prog.ayim.R
-import com.kay.prog.ayim.database.CharacterEntity
-import com.kay.prog.ayim.extensions.toCharacterEntity
+import com.kay.prog.ayim.data.models.CharacterEntity
+import com.kay.prog.ayim.data.repo.RickAndMortyRepo
+import com.kay.prog.ayim.domain.GetCharactersUseCase
 import com.kay.prog.ayim.ui.Event
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import java.net.UnknownHostException
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+
+    private val repo = RickAndMortyRepo(
+        getApplication<App>().rickAndMortyApi,
+        getApplication<App>().database.characterDao()
+    )
+
+    private val getCharactersUseCase = GetCharactersUseCase(repo)
 
     val charactersLiveData: LiveData<List<CharacterEntity>> =
         getApplication<App>().database.characterDao().getAll()
@@ -33,19 +39,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         _event.value = Event.ShowLoading
 
         compositeDisposable.add(
-            getApplication<App>().rickAndMortyApi.getAllCharacters()
-                .subscribeOn(Schedulers.io())
-                .map { response ->
-                    val list = mutableListOf<CharacterEntity>()
-                    response.results.forEach {
-                        list.add(it.toCharacterEntity())
-                    }
-                    list.toList()
-                }
-                .map {
-                    getApplication<App>().database.characterDao().insertList(it)
-                }
-                .observeOn(AndroidSchedulers.mainThread())
+           getCharactersUseCase()
                 .doOnTerminate { _event.value = Event.StopLoading }
                 .subscribe({}, {
                     handleError(it)
@@ -65,4 +59,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         compositeDisposable.clear()
     }
 
+    fun clearEvents() {
+        _event.value = null
+    }
 }

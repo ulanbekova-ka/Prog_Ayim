@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.kay.prog.ayim.R
-import com.kay.prog.ayim.database.CharacterEntity
+import com.kay.prog.ayim.data.models.CharacterEntity
 import com.kay.prog.ayim.databinding.FrgCharacterBinding
 import com.kay.prog.ayim.ui.Event
 

@@ -1,4 +1,4 @@
-package com.kay.prog.ayim.database
+package com.kay.prog.ayim.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
