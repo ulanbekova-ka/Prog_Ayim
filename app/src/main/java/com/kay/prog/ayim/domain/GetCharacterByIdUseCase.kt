@@ -5,10 +5,11 @@ import com.kay.prog.ayim.data.models.toCharacterEntity
 import com.kay.prog.ayim.data.repo.RickAndMortyRepo
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import javax.inject.Inject
 
-class GetCharacterByIdUseCase(
+class GetCharacterByIdUseCase @Inject constructor(
     private val repo: RickAndMortyRepo
-) {
+    ) {
 
     operator fun invoke(id: Long): Single<CharacterEntity> {
         return repo.getCharacter(id)

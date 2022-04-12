@@ -4,28 +4,26 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.kay.prog.ayim.App
 import com.kay.prog.ayim.R
 import com.kay.prog.ayim.data.models.CharacterEntity
-import com.kay.prog.ayim.data.repo.RickAndMortyRepo
+import com.kay.prog.ayim.domain.GetCharacterAsLiveDataUseCase
 import com.kay.prog.ayim.domain.GetCharactersUseCase
 import com.kay.prog.ayim.ui.Event
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
 import java.net.UnknownHostException
+import javax.inject.Inject
 
-class MainViewModel(application: Application): AndroidViewModel(application) {
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    application: Application,
+    private val getCharacterAsLiveDataUseCase: GetCharacterAsLiveDataUseCase,
+    private val getCharactersUseCase: GetCharactersUseCase
+    ): AndroidViewModel(application) {
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    private val repo = RickAndMortyRepo(
-        getApplication<App>().rickAndMortyApi,
-        getApplication<App>().database.characterDao()
-    )
-
-    private val getCharactersUseCase = GetCharactersUseCase(repo)
-
-    val charactersLiveData: LiveData<List<CharacterEntity>> =
-        getApplication<App>().database.characterDao().getAll()
+    val charactersLiveData: LiveData<List<CharacterEntity>> = getCharacterAsLiveDataUseCase()
 
     private val _event = MutableLiveData<Event?>()
     val event: LiveData<Event?>
@@ -57,6 +55,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.clear()
+        clearEvents()
     }
 
     fun clearEvents() {

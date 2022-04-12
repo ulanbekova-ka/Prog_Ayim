@@ -5,10 +5,11 @@ import com.kay.prog.ayim.data.models.toCharacterEntity
 import com.kay.prog.ayim.data.repo.RickAndMortyRepo
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import javax.inject.Inject
 
-class GetCharactersUseCase(
+class GetCharactersUseCase @Inject constructor(
     private val repo: RickAndMortyRepo
-) {
+    ) {
 
     operator fun invoke(): Observable<Unit> {
         return repo.getCharacters()

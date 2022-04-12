@@ -4,24 +4,21 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.kay.prog.ayim.App
-import com.kay.prog.ayim.data.repo.RickAndMortyRepo
 import com.kay.prog.ayim.domain.GetCharacterByIdUseCase
 import com.kay.prog.ayim.ui.Event
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class CharacterViewModel(application: Application): AndroidViewModel(application) {
+@HiltViewModel
+class CharacterViewModel @Inject constructor(
+    application: Application,
+    private val getCharacterByIdCase: GetCharacterByIdUseCase
+): AndroidViewModel(application) {
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
-
-    private val repo = RickAndMortyRepo(
-        getApplication<App>().rickAndMortyApi,
-        getApplication<App>().database.characterDao()
-    )
-
-    private val getCharacterUseCase = GetCharacterByIdUseCase(repo)
 
     private var id: Long = -1
     fun setId(id: Long?) {
@@ -34,7 +31,7 @@ class CharacterViewModel(application: Application): AndroidViewModel(application
 
     fun fetchCharacter() {
         compositeDisposable.add(
-            getCharacterUseCase(id)
+            getCharacterByIdCase(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess {

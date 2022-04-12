@@ -8,8 +8,9 @@ import com.kay.prog.ayim.data.network.RickAndMortyApi
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class RickAndMortyRepo(
+class RickAndMortyRepo @Inject constructor(
     private val rickAndMortyApi: RickAndMortyApi,
     private val characterDao: CharacterDao
 ) {
@@ -28,8 +29,5 @@ class RickAndMortyRepo(
         characterDao.insertList(characterList)
     }
 
-//    fun getCharacterById(id: Long): Single<CharacterEntity> {
-//        return characterDao.getById(id)
-//            .subscribeOn(Schedulers.io())
-//    }
+    fun getCharacterAsLive() = characterDao.getAll()
 }

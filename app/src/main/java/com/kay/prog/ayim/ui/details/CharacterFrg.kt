@@ -9,7 +9,9 @@ import com.kay.prog.ayim.R
 import com.kay.prog.ayim.data.models.CharacterEntity
 import com.kay.prog.ayim.databinding.FrgCharacterBinding
 import com.kay.prog.ayim.ui.Event
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CharacterFrg : Fragment (R.layout.frg_character) {
     private var _binding: FrgCharacterBinding? = null
     private val binding get() = _binding!!

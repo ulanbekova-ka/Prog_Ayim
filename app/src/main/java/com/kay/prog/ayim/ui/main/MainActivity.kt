@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import com.kay.prog.ayim.R
 import com.kay.prog.ayim.databinding.ActivityMainBinding
 import com.kay.prog.ayim.ui.Navigate
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Navigate {
     private lateinit var binding: ActivityMainBinding
 

@@ -13,7 +13,9 @@ import com.kay.prog.ayim.R
 import com.kay.prog.ayim.databinding.FrgMainBinding
 import com.kay.prog.ayim.ui.Event
 import com.kay.prog.ayim.ui.details.CharacterFrg
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFrg : Fragment(R.layout.frg_main) {
     private var _binding: FrgMainBinding? = null
     private val binding get() = _binding!!
