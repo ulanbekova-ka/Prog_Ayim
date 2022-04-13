@@ -4,8 +4,8 @@ import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class InterceptorOkHttpClient
+annotation class ApiWithInterceptor
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class NoInterceptorOkHttpClient
+annotation class ApiWithoutInterceptor

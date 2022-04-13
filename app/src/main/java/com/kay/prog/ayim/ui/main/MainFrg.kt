@@ -1,6 +1,8 @@
 package com.kay.prog.ayim.ui.main
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -25,10 +27,14 @@ class MainFrg : Fragment(R.layout.frg_main) {
 
     private lateinit var adapter: Adapter
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as Navigate
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         vm = ViewModelProvider(this)[MainViewModel::class.java]
-        listener = context as Navigate
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,6 +61,7 @@ class MainFrg : Fragment(R.layout.frg_main) {
 
     private fun subscribeToLiveData() {
         vm.charactersLiveData.observe(viewLifecycleOwner) {
+            Log.d("TAG", it.toString())
             adapter.setData(it)
         }
 
