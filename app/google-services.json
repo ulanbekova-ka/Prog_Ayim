@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "606642479448",
+    "project_id": "progayimdar",
+    "storage_bucket": "progayimdar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606642479448:android:efda87f1eb959f382bc52d",
+        "android_client_info": {
+          "package_name": "com.pro.programayimapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606642479448-nn0r7drcq0cpckcj14t2rf5st9nhurto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuFPb8GScOlJvoazzl39f65i_iAN3sAsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606642479448-nn0r7drcq0cpckcj14t2rf5st9nhurto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
